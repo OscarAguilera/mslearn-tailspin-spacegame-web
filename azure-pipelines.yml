@@ -63,3 +63,11 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
   condition: succeeded()
+
+- task: HelmDeploy@0
+  inputs:
+    connectionType: 'Azure Resource Manager'
+    azureResourceGroup: 'azureDevOps'
+    kubernetesCluster: 'AzureDevOps'
+    namespace: 'helmdeploy'
+    command: 'ls'
